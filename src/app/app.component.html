@@ -35,16 +35,19 @@
                     (click)="rotate()">Крутить волчок</button>
         <button mat-raised-button color="primary"
                     (click)="correctAnswer()"
-                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">Правильный ответ</button>
+                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">Правильно</button>
         <button mat-raised-button color="primary"
                     (click)="incorrectAnswer()"
-                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">Неправильный ответ</button>
+                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">Неправильно</button>
         <button mat-raised-button color="primary"
                     (click)="questionAnnounced()"
                     *ngIf="currentQuestion !== null && currentQuestion!== undefined">Гонг</button>
         <button mat-raised-button color="primary"
                     (click)="minuteThinking()"
                     *ngIf="currentQuestion !== null && currentQuestion!== undefined">Минута</button>
+        <button mat-raised-button color="primary"
+                    (click)="blackBox()"
+                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">ЧЯ</button>
       </mat-card-actions>
     </div>
   </div>

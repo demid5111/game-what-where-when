@@ -99,4 +99,13 @@ export class AppComponent implements OnInit {
       this.thinkingAudio.currentTime = 0;
     }, 67000);
   }
+
+  blackBox() {
+    const boxAudio = new Audio('../assets/audio/black_box.mp3');
+    boxAudio.play();
+    setTimeout(() => {
+      boxAudio.pause();
+      boxAudio.currentTime = 0;
+    }, 20000);
+  }
 }
