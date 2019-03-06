@@ -26,7 +26,7 @@
   <div class="options-container">
     <app-question-dialog class="question-card"
                           [currentQuestion]="currentQuestion"
-                          *ngIf="currentQuestion">
+                          *ngIf="currentQuestion !== null && currentQuestion!== undefined">
     
     </app-question-dialog>
     <div class="question-controls">
@@ -35,10 +35,16 @@
                     (click)="rotate()">Крутить волчок</button>
         <button mat-raised-button color="primary"
                     (click)="correctAnswer()"
-                    *ngIf="currentQuestion">Знатоки дали правильный ответ</button>
-        <button mat-raised-button color="correctAnswer"
+                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">Правильный ответ</button>
+        <button mat-raised-button color="primary"
                     (click)="incorrectAnswer()"
-                    *ngIf="currentQuestion">Знатоки дали неправильный ответ</button>
+                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">Неправильный ответ</button>
+        <button mat-raised-button color="primary"
+                    (click)="questionAnnounced()"
+                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">Гонг</button>
+        <button mat-raised-button color="primary"
+                    (click)="minuteThinking()"
+                    *ngIf="currentQuestion !== null && currentQuestion!== undefined">Минута</button>
       </mat-card-actions>
     </div>
   </div>

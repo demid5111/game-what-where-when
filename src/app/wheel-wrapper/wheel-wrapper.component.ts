@@ -13,7 +13,6 @@ const COLORS = {
   styleUrls: ['./wheel-wrapper.component.scss']
 })
 export class WheelWrapperComponent implements OnInit, OnChanges {
-  audio: any;
   theWheel: any;
   canvas: any;
   sectorColors = [
@@ -48,8 +47,6 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
     this.canvas = document.getElementById('canvas');
     
     this.initializeWheel();
-
-    this.audio = new Audio('kids-music.mp3');
 
     // Specify click handler for canvas.
     this.canvas.onclick =  (e) => {
@@ -94,7 +91,6 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
   }
 
   startSpin() {  
-    // this.audio.play();
     this.currentSelectedSegmentNumber = null;
     this.theWheel.stopAnimation(false);
     this.theWheel.rotationAngle = 0;
@@ -106,15 +102,13 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
   // Called when the animation has finished.
   rotatingFinished()
   {
-      // Stop and rewind the sound (stops it if still playing).
-      // this.audio.pause();
-      this.audio.currentTime = 0;
       this.resetAnimation();
 
       this.currentSelectedSegmentNumber = this.theWheel.getIndicatedSegmentNumber();
  
       this.drawTriangle();
       this.theWheel.draw();
+      this.drawTriangle();
     }
 
   addNewSegment(text: string, color: string) {
@@ -149,10 +143,10 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
     const triangleRendering = this.drawTriangle.bind(this);
     const animation = {
         'type'             : 'spinToStop',
-        'duration'         : 6.4,
+        'duration'         : 15,
         'callbackFinished' : onRotatingFinished,
         'callbackAfter' : triangleRendering,
-        'spins'        : 5,
+        'spins'        : 25,
         'easing'       : 'Power2.easeInOut',
         'repeat'       : 0,
         'yoyo'         : false

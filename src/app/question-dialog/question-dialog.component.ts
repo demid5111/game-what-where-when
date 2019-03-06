@@ -3,10 +3,10 @@ import { Component, OnInit, Input } from '@angular/core';
 const TASKS = [
     {
         isAudio: true,
-        pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        pathToAudio: '../../assets/audio/robot.mp3',
+        name: 'Робот Атлас',
+        motto: 'Бостон дайнемикс',
+        description: '',
         img: 'boston_dynamics.jpeg'
     },
     {
@@ -14,9 +14,9 @@ const TASKS = [
         isVideo: false,
         pathToAudio: '',
         pathToVideo: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Джефф',
+        motto: 'Обычный менеджер Нижегородской компании',
+        description: '',
         img: 'manager.jpeg'
     },
     {
@@ -24,9 +24,9 @@ const TASKS = [
         isVideo: false,
         pathToAudio: '',
         pathToVideo: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'HAL 9000',
+        motto: 'Искуственный интеллект',
+        description: '',
         img: 'ai.jpeg'
     },
     {
@@ -34,81 +34,81 @@ const TASKS = [
         isVideo: false,
         pathToAudio: '',
         pathToVideo: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Серж',
+        motto: 'Работник барбершопа',
+        description: '',
         img: 'barber.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Майкл',
+        motto: 'Баскетболист',
+        description: '',
         img: 'basketball.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Максим',
+        motto: 'многодетный отец из Нижнего Новгорода',
+        description: '',
         img: 'parent.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Леха Штырь',
+        motto: 'Четкий парень',
+        description: '',
         img: 'gop_stop.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Гоча',
+        motto: 'Таксист',
+        description: '',
         img: 'akhmet.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Артур',
+        motto: 'лучший танцор-бальник 175-ой школы',
+        description: '',
         img: 'tanzor.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Артем Пупсиков',
+        motto: 'летний школьник',
+        description: '',
         img: 'pupsik.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Ахмед',
+        motto: 'кмс по вольной борьбе',
+        description: '',
         img: 'wrestler.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Харви',
+        motto: 'Кинопродюссер',
+        description: '',
         img: 'director.jpeg'
     },
     {
-        isAudio: true,
+        isAudio: false,
         pathToAudio: '',
-        name: 'Boston Dynamics',
-        motto: 'always AI',
-        description: 'OMG, cannot talk',
+        name: 'Иван',
+        motto: 'Оператор колл-центра',
+        description: '',
         img: 'operator.jpeg'
     },
 ]
@@ -133,7 +133,8 @@ export class QuestionDialogComponent implements OnInit {
     }
 
     listenToAudio() {
-        console.log('listening to the audio' + this.currentQuestion);
+        const audio = new Audio(this.tasks[this.currentQuestion].pathToAudio);
+        audio.play();
     }
 
 }
