@@ -1,12 +1,71 @@
-.example-header-image {
+.boston-header-image {
     background-image: url('../../assets/img/boston_dynamics.jpeg');
     background-size: cover;
   }
 
+  .ai-header-image {
+    background-image: url('../../assets/img/ai.jpeg');
+    background-size: cover;
+  }
+
+  .akhmet-header-image {
+    background-image: url('../../assets/img/akhmet.jpeg');
+    background-size: cover;
+  }
+
+  .barber-header-image {
+    background-image: url('../../assets/img/barber.jpeg');
+    background-size: cover;
+  }
+
+  .basketball-header-image {
+    background-image: url('../../assets/img/basketball.jpeg');
+    background-size: cover;
+  }
+
+  .director-header-image {
+    background-image: url('../../assets/img/director.jpeg');
+    background-size: cover;
+  }
+
+  .gop_stop-header-image {
+    background-image: url('../../assets/img/gop_stop.jpeg');
+    background-size: cover;
+  }
+
+  .manager-header-image {
+    background-image: url('../../assets/img/manager.jpeg');
+    background-size: cover;
+  }
+
+  .operator-header-image {
+    background-image: url('../../assets/img/operator.jpeg');
+    background-size: cover;
+  }
+
+  .parent-header-image {
+    background-image: url('../../assets/img/parent.jpeg');
+    background-size: cover;
+  }
+
+  .pupsik-header-image {
+    background-image: url('../../assets/img/pupsik.jpeg');
+    background-size: cover;
+  }
+
+  .boston-header-image {
+    background-image: url('../../assets/img/tanzor.jpeg');
+    background-size: cover;
+  }
+
+  .wrestler-header-image {
+    background-image: url('../../assets/img/wrestler.jpeg');
+    background-size: cover;
+  }
+
   .img-question {
-    object-fit: cover; /*this makes de image in src fit to the size of specified below*/
-    width: 100%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-    height: 80%;
+    max-width: 650px;
+    max-height: 350px;
   }
 
   .example-card {

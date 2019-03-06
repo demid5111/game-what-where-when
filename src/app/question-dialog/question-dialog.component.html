@@ -1,6 +1,44 @@
 <mat-card class="example-card">
     <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
+        <div mat-card-avatar 
+            class="boston-header-image"
+            *ngIf="tasks[currentQuestion].img === 'boston_dynamics.jpeg'"></div>
+        <div mat-card-avatar 
+            class="ai-header-image"
+            *ngIf="tasks[currentQuestion].img === 'ai.jpeg'"></div>
+        <div mat-card-avatar 
+            class="akhmet-header-image"
+            *ngIf="tasks[currentQuestion].img === 'akhmet.jpeg'"></div>
+        <div mat-card-avatar 
+            class="barber-header-image"
+            *ngIf="tasks[currentQuestion].img === 'barber.jpeg'"></div>
+        <div mat-card-avatar 
+            class="basketball-header-image"
+            *ngIf="tasks[currentQuestion].img === 'basketball.jpeg'"></div>
+        <div mat-card-avatar 
+            class="director-header-image"
+            *ngIf="tasks[currentQuestion].img === 'director.jpeg'"></div>
+        <div mat-card-avatar 
+            class="gop_stop-header-image"
+            *ngIf="tasks[currentQuestion].img === 'gop_stop.jpeg'"></div>
+        <div mat-card-avatar 
+            class="manager-header-image"
+            *ngIf="tasks[currentQuestion].img === 'manager.jpeg'"></div>
+        <div mat-card-avatar 
+            class="operator-header-image"
+            *ngIf="tasks[currentQuestion].img === 'operator.jpeg'"></div>
+        <div mat-card-avatar 
+            class="parent-header-image"
+            *ngIf="tasks[currentQuestion].img === 'parent.jpeg'"></div>
+        <div mat-card-avatar 
+            class="pupsik-header-image"
+            *ngIf="tasks[currentQuestion].img === 'pupsik.jpeg'"></div>
+        <div mat-card-avatar 
+            class="tanzor-header-image"
+            *ngIf="tasks[currentQuestion].img === 'tanzor.jpeg'"></div>
+        <div mat-card-avatar 
+            class="wrestler-header-image"
+            *ngIf="tasks[currentQuestion].img === 'wrestler.jpeg'"></div>
       <mat-card-title>{{tasks[currentQuestion].name}}</mat-card-title>
       <mat-card-subtitle>{{tasks[currentQuestion].motto}}</mat-card-subtitle>
     </mat-card-header>
@@ -57,6 +95,16 @@
     <img *ngIf="tasks[currentQuestion].img === 'wrestler.jpeg'" 
         mat-card-image 
         src="../../assets/img/wrestler.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'director.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/director.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'operator.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/operator.jpeg" 
         alt="Photo" 
         class="img-question">
     <mat-card-content>

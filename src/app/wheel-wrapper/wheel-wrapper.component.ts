@@ -16,26 +16,28 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
   audio: any;
   theWheel: any;
   canvas: any;
-  clickedWhat: any;
   sectorColors = [
-    '#eae56f', 
-    '#89f26e', 
-    '#7de6ef', 
-    '#e7706f',
-    '#eae56f',
-    '#89f26e',
-    '#7de6ef',
-    '#e7706f',
-    '#eae56f',
-    '#89f26e',
-    '#7de6ef',
-    '#e7706f',
-    '#000000'
+      'rgba(217,64,121,0.7)',
+      'rgba(0, 128, 144, 1)',
+      'rgba(138, 196, 199, 1)',
+      'rgba(191, 191, 61, 1)',
+      'rgba(109, 15, 63, 1)',
+      'rgba(180,45,51,0.7)',
+      'rgba(228, 231, 140, 1)',
+      'rgba(43,151,197,0.7)',
+      'rgba(246, 104, 57, 1)',
+      'rgba(20,4,104,0.7)',
+      'rgba(0, 128, 0, 1)',
+      'rgba(210,180,222,0.7)',
+      'rgba(255,0,0, 1)'
   ];
   currentSelectedSegmentNumber: number;
 
   @Input()
   sectorsOpened: any[];
+
+  @Input()
+  startRotating: any;
 
   @Output()
   sectorSelected: EventEmitter<any> =  new EventEmitter<any>();
@@ -44,7 +46,6 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.canvas = document.getElementById('canvas');
-    this.clickedWhat = document.getElementById('clickedWhat');
     
     this.initializeWheel();
 
@@ -56,9 +57,7 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
       const clickedSegment = this.theWheel.getSegmentAt(e.clientX, e.clientY);
       const segmentNumber = +clickedSegment.text.split(' ')[1];
       
-      if (!this.currentSelectedSegmentNumber || this.currentSelectedSegmentNumber !== segmentNumber) {
-        return;
-      } else if (!clickedSegment) {
+      if (!clickedSegment) {
         return;
       }
 
@@ -73,9 +72,14 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
         return;
       }
       switch (key) {
-        case 'sectorSelected':
-          this.disableSectors(val);
+        case 'sectorsOpened':
+          this.disableSectors(val.currentValue);
           return;
+        case 'startRotating':
+          if (!val.currentValue) {
+            return;
+          }
+          this.startSpin();
         default:
           return;
       }
@@ -103,19 +107,12 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
   rotatingFinished()
   {
       // Stop and rewind the sound (stops it if still playing).
-      this.audio.pause();
+      // this.audio.pause();
       this.audio.currentTime = 0;
       this.resetAnimation();
 
       this.currentSelectedSegmentNumber = this.theWheel.getIndicatedSegmentNumber();
  
-      // Loop and set fillStyle of all segments to gray.
-      for (let x = 1; x < this.theWheel.segments.length; x ++) {
-        this.theWheel.segments[x].fillStyle = COLORS.INACTIVE_SECTOR;
-      }
-
-      // Make the winning one yellow.
-      this.theWheel.segments[this.currentSelectedSegmentNumber].fillStyle = COLORS.ACTIVE_SECTOR;
       this.drawTriangle();
       this.theWheel.draw();
     }
@@ -145,9 +142,6 @@ export class WheelWrapperComponent implements OnInit, OnChanges {
 
     // Render changes.
     this.theWheel.draw();
-
-    // Also blank clicked what text.
-    this.clickedWhat.innerText = "";
   }
 
   resetAnimation() {

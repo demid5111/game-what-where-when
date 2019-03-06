@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 const TASKS = [
     {
@@ -95,6 +95,22 @@ const TASKS = [
         description: 'OMG, cannot talk',
         img: 'wrestler.jpeg'
     },
+    {
+        isAudio: true,
+        pathToAudio: '',
+        name: 'Boston Dynamics',
+        motto: 'always AI',
+        description: 'OMG, cannot talk',
+        img: 'director.jpeg'
+    },
+    {
+        isAudio: true,
+        pathToAudio: '',
+        name: 'Boston Dynamics',
+        motto: 'always AI',
+        description: 'OMG, cannot talk',
+        img: 'operator.jpeg'
+    },
 ]
 
 
@@ -104,8 +120,10 @@ const TASKS = [
   styleUrls: ['./question-dialog.component.scss']
 })
 export class QuestionDialogComponent implements OnInit {
-    currentQuestion = 0;
     tasks: any[];
+
+    @Input()
+    currentQuestion: number;
 
     constructor() { 
         this.tasks = TASKS;

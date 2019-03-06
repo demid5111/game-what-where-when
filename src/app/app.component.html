@@ -19,17 +19,26 @@
   <app-wheel-wrapper
                   class="roulette-container" 
                   [sectorsOpened]="sectorsOpened"
+                  [startRotating]="startRotating"
                   (sectorSelected)="onSectorSelected($event)">
   
                 </app-wheel-wrapper>
   <div class="options-container">
-    <app-question-dialog class="question-card">
+    <app-question-dialog class="question-card"
+                          [currentQuestion]="currentQuestion"
+                          *ngIf="currentQuestion">
     
     </app-question-dialog>
     <div class="question-controls">
       <mat-card-actions>
-        <button mat-raised-button color="primary">LIKE</button>
-        <button mat-raised-button color="primary">SHARE</button>
+        <button mat-raised-button color="primary"
+                    (click)="rotate()">Крутить волчок</button>
+        <button mat-raised-button color="primary"
+                    (click)="correctAnswer()"
+                    *ngIf="currentQuestion">Знатоки дали правильный ответ</button>
+        <button mat-raised-button color="correctAnswer"
+                    (click)="incorrectAnswer()"
+                    *ngIf="currentQuestion">Знатоки дали неправильный ответ</button>
       </mat-card-actions>
     </div>
   </div>

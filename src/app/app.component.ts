@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { QuestionDialogComponent } from './question-dialog/question-dialog.component';
 import { MatDialog } from '@angular/material';
 
 @Component({
@@ -10,16 +9,18 @@ import { MatDialog } from '@angular/material';
 export class AppComponent implements OnInit {
   title = 'game-what-where-when';
   gameStarted = false;
-  openedSectors: number[];
+  sectorsOpened: number[];
   watchersCount = 0;
   femalesCount = 0;
+  currentQuestion = null;
+  startRotating = false;
 
   constructor(public dialog: MatDialog) {
     
   }
 
   ngOnInit() {
-    this.openedSectors = [];
+    this.sectorsOpened = [];
   }
 
   public startGame() {
@@ -27,17 +28,23 @@ export class AppComponent implements OnInit {
   }
 
   public onSectorSelected(element) {
-    this.openedSectors.push(element);
+    this.sectorsOpened = [...this.sectorsOpened, element];
+    this.currentQuestion = element-1;
+  }
 
-    // let dialogRef = this.dialog.open(QuestionDialogComponent, {
-    //   height: '500px',
-    //   width: '600px',
-    // });
+  rotate() {
+    this.currentQuestion = null;
+    this.startRotating = false;
+    setTimeout(() => {
+      this.startRotating = true;
+    }, 10);
+  }
 
-    // dialogRef.afterClosed().subscribe((result) => {
-    //   console.log(`Dialog result: ${result}`); // Pizza!
-    // });
-    
-    // dialogRef.close('Pizza!');
+  correctAnswer() {
+    this.femalesCount += 1;
+  }
+
+  incorrectAnswer() {
+    this.watchersCount += 1;
   }
 }
