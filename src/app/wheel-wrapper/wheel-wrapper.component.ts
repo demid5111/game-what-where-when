@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 
 import '../../../javascript-winwheel/Winwheel';
 
@@ -12,7 +12,7 @@ const COLORS = {
   templateUrl: './wheel-wrapper.component.html',
   styleUrls: ['./wheel-wrapper.component.scss']
 })
-export class WheelWrapperComponent implements OnInit {
+export class WheelWrapperComponent implements OnInit, OnChanges {
   audio: any;
   theWheel: any;
   canvas: any;
@@ -34,6 +34,12 @@ export class WheelWrapperComponent implements OnInit {
   ];
   currentSelectedSegmentNumber: number;
 
+  @Input()
+  sectorsOpened: any[];
+
+  @Output()
+  sectorSelected: EventEmitter<any> =  new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit() {
@@ -46,27 +52,46 @@ export class WheelWrapperComponent implements OnInit {
 
     // Specify click handler for canvas.
     this.canvas.onclick =  (e) => {
-        // Call function to reset the segment colours.
-        this.resetSegmentColours();
- 
-        // Call the getSegmentAt function passing the mouse x and y from the event.
-        let clickedSegment = this.theWheel.getSegmentAt(e.clientX, e.clientY);
- 
-        // A pointer to the segment clicked is returned if the user clicked inside the wheel.
-        if (clickedSegment) {
-            // Change background colour of the segment and update the wheel.
-            clickedSegment.fillStyle = COLORS.ACTIVE_SECTOR;
-            this.theWheel.draw();
- 
-            // Update span to say what was clicked.
-            this.clickedWhat.innerText = clickedSegment.text;
-        }
+      // Call the getSegmentAt function passing the mouse x and y from the event.
+      const clickedSegment = this.theWheel.getSegmentAt(e.clientX, e.clientY);
+      const segmentNumber = +clickedSegment.text.split(' ')[1];
+      
+      if (!this.currentSelectedSegmentNumber || this.currentSelectedSegmentNumber !== segmentNumber) {
+        return;
+      } else if (!clickedSegment) {
+        return;
+      }
+
+      this.sectorSelected.emit(segmentNumber);
     }
   }
 
-  startSpin()
-  {  
+  ngOnChanges(changes: SimpleChanges) {
+    Object.keys(changes).forEach((key) => {
+      const val = changes[key];
+      if (val.isFirstChange()) {
+        return;
+      }
+      switch (key) {
+        case 'sectorSelected':
+          this.disableSectors(val);
+          return;
+        default:
+          return;
+      }
+    });
+  }
+
+  disableSectors(val){
+    val.forEach((el) => {
+      this.sectorColors[el] = COLORS.INACTIVE_SECTOR;
+    });
+    this.resetSegmentColours();
+  }
+
+  startSpin() {  
     // this.audio.play();
+    this.currentSelectedSegmentNumber = null;
     this.theWheel.stopAnimation(false);
     this.theWheel.rotationAngle = 0;
     this.resetSegmentColours();
@@ -115,7 +140,7 @@ export class WheelWrapperComponent implements OnInit {
   // Resets the segment colours.
   fillWithSegments() {
     this.sectorColors.forEach((color, i) => {
-      this.addNewSegment(`Сектор ${i}`, color);
+      this.addNewSegment(`Сектор ${i+1}`, color);
     });
 
     // Render changes.
@@ -158,7 +183,7 @@ export class WheelWrapperComponent implements OnInit {
   }
 
   initializeWheel() {
-    this.theWheel = new window.Winwheel({
+    this.theWheel = new window['Winwheel']({
       'numSegments'   : 0,
       'outerRadius'   : 270,
       'innerRadius'   : 40,

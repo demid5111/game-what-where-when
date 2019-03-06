@@ -1,0 +1,71 @@
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{tasks[currentQuestion].name}}</mat-card-title>
+      <mat-card-subtitle>{{tasks[currentQuestion].motto}}</mat-card-subtitle>
+    </mat-card-header>
+    <img *ngIf="tasks[currentQuestion].img === 'boston_dynamics.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/boston_dynamics.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'manager.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/manager.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'ai.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/ai.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'barber.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/barber.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'basketball.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/basketball.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'parent.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/parent.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'gop_stop.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/gop_stop.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'akhmet.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/akhmet.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'tanzor.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/tanzor.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'pupsik.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/pupsik.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <img *ngIf="tasks[currentQuestion].img === 'wrestler.jpeg'" 
+        mat-card-image 
+        src="../../assets/img/wrestler.jpeg" 
+        alt="Photo" 
+        class="img-question">
+    <mat-card-content>
+      <p>
+        {{tasks[currentQuestion].description}}
+      </p>
+    </mat-card-content>
+
+    <button mat-raised-button *ngIf="tasks[currentQuestion].isAudio"
+                                (click)="listenToAudio()">Прослушать сообщение</button>
+  </mat-card>
+  

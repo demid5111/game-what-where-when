@@ -1,4 +1,40 @@
-<app-wheel-wrapper *ngIf="gameStarted"></app-wheel-wrapper>
+<div *ngIf="gameStarted" class="game-container">
+  <div class="header-container">
+    <div class="watchers-text text-large-1x">
+      Зрители
+    </div>
+    <div class="watchers-count text-large-1x">
+      {{watchersCount}}
+    </div>
+    <div class="colon text-large-1x">
+      :
+    </div>
+    <div class="females-count text-large-1x">
+      {{femalesCount}}
+    </div>
+    <div class="females-text text-large-1x">
+      Женский экипаж
+    </div>
+  </div>
+  <app-wheel-wrapper
+                  class="roulette-container" 
+                  [sectorsOpened]="sectorsOpened"
+                  (sectorSelected)="onSectorSelected($event)">
+  
+                </app-wheel-wrapper>
+  <div class="options-container">
+    <app-question-dialog class="question-card">
+    
+    </app-question-dialog>
+    <div class="question-controls">
+      <mat-card-actions>
+        <button mat-raised-button color="primary">LIKE</button>
+        <button mat-raised-button color="primary">SHARE</button>
+      </mat-card-actions>
+    </div>
+  </div>
+</div>
+
 
 <div class='container' *ngIf="!gameStarted" (click)="startGame()">
   <div>
