@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'game-what-where-when';
+  gameStarted = false;
+
+  public startGame() {
+    this.gameStarted = true;
+  }
 }
