@@ -4,7 +4,7 @@ const TASKS = [
     {
         isAudio: true,
         pathToAudio: '../../assets/audio/robot.mp3',
-        name: 'Робот Атлас',
+        name: 'Робот',
         motto: 'Бостон дайнемикс',
         description: '',
         img: 'boston_dynamics.jpeg'
@@ -14,8 +14,8 @@ const TASKS = [
         isVideo: false,
         pathToAudio: '',
         pathToVideo: '',
-        name: 'Джефф',
-        motto: 'Обычный менеджер Нижегородской компании',
+        name: 'Айрон',
+        motto: 'менеджер',
         description: '',
         img: 'manager.jpeg'
     },
@@ -50,8 +50,8 @@ const TASKS = [
     {
         isAudio: false,
         pathToAudio: '',
-        name: 'Максим',
-        motto: 'многодетный отец из Нижнего Новгорода',
+        name: 'Петр',
+        motto: 'отец',
         description: '',
         img: 'parent.jpeg'
     },
@@ -82,7 +82,7 @@ const TASKS = [
     {
         isAudio: false,
         pathToAudio: '',
-        name: 'Артем Пупсиков',
+        name: 'Стас Пупсиков',
         motto: 'летний школьник',
         description: '',
         img: 'pupsik.jpeg'
